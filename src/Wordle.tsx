@@ -1,5 +1,11 @@
+import Word from "./Word";
+
 function Wordle() {
-  return <div>Hello World!</div>;
+  return (
+    <div>
+      <Word />
+    </div>
+  );
 }
 
 export default Wordle;
