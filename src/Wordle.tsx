@@ -2,7 +2,7 @@ import Word from "./Word";
 
 function Wordle() {
   return (
-    <div>
+    <div className="d-flex justify-content-center">
       <Word />
     </div>
   );
