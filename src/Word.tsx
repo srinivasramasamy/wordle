@@ -1,23 +1,40 @@
 function Word() {
   return (
     <>
-      <ul className="list-group list-group-horizontal d-flex justify-content-center">
-        <li className="list-group-item bg-success text-white">
-          <b>A</b>
-        </li>
-        <li className="list-group-item bg-secondary text-white">
-          <b>P</b>
-        </li>
-        <li className="list-group-item bg-warning text-white">
-          <b>P</b>
-        </li>
-        <li className="list-group-item bg-secondary text-white">
-          <b>L</b>
-        </li>
-        <li className="list-group-item bg-secondary text-white">
-          <b>A</b>
-        </li>
-      </ul>
+      <table className="table border fw-bold text-white" style={{ width: 250 }}>
+        <tr>
+          <td
+            className="border text-center bg-success"
+            style={{ width: 50, height: 50 }}
+          >
+            A
+          </td>
+          <td
+            className="border text-center bg-secondary"
+            style={{ width: 50, height: 50 }}
+          >
+            P
+          </td>
+          <td
+            className="border text-center bg-warning"
+            style={{ width: 50, height: 50 }}
+          >
+            P
+          </td>
+          <td
+            className="border text-center bg-secondary"
+            style={{ width: 50, height: 50 }}
+          >
+            L
+          </td>
+          <td
+            className="border text-center bg-secondary text-white"
+            style={{ width: 50, height: 50 }}
+          >
+            E
+          </td>
+        </tr>
+      </table>
     </>
   );
 }
