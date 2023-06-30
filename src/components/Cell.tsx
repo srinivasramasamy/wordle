@@ -1,4 +1,5 @@
 import { Letter } from "../types/Letter";
+import { Match } from "../types/Match";
 
 interface Iprops {
   letter?: Letter;
@@ -6,11 +7,11 @@ interface Iprops {
 
 const getBackgroundClassName = (match: string | undefined): string => {
   switch (match) {
-    case "presentInSpot":
+    case Match.PresentInSpot:
       return "bg-success";
-    case "present":
+    case Match.Present:
       return "bg-warning";
-    case "absent":
+    case Match.Absent:
       return "bg-secondary";
     default:
       return "";
