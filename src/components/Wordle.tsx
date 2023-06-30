@@ -24,8 +24,11 @@ function Wordle() {
 
   const onKeyDown = (e: KeyboardEvent) => {
     const code: number = e.keyCode;
+    const firstNonSubmittedWord: Word | undefined = words.find((word) =>
+      notSubmitted(word)
+    );
     if ((code > 64 && code < 91) || (code > 96 && code < 123)) {
-      const firstEmptyLetter: Letter = words[0].letters.find(
+      const firstEmptyLetter: Letter = firstNonSubmittedWord?.letters.find(
         (letter) => letter.char === ""
       )!;
 
@@ -35,16 +38,26 @@ function Wordle() {
 
       setWords([...words]);
     } else if (code === 8) {
-      const lastNonEmptyLetter: Letter = words[0].letters.findLast(
-        (letter) => letter.char.length > 0
-      )!;
+      const lastNonEmptyLetter: Letter =
+        firstNonSubmittedWord?.letters.findLast(
+          (letter) => letter.char.length > 0
+        )!;
 
       if (lastNonEmptyLetter) {
         lastNonEmptyLetter.char = "";
       }
 
       setWords([...words]);
+    } else if (code === 13) {
+      if (firstNonSubmittedWord) {
+        firstNonSubmittedWord.submitted = true;
+      }
+      setWords([...words]);
     }
+  };
+
+  const notSubmitted = (word: Word): boolean => {
+    return !word.submitted;
   };
 
   useEffect(() => {
