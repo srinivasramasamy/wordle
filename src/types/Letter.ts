@@ -1,4 +1,4 @@
-class Letter {
+export class Letter {
   char: string;
   match: string | undefined;
 
