@@ -23,15 +23,18 @@ function Wordle() {
   ]);
 
   const onKeyDown = (e: KeyboardEvent) => {
-    const firstEmptyLetter: Letter = words[0].letters.find(
-      (letter) => letter.char === ""
-    )!;
+    const code: number = e.keyCode;
+    if ((code > 64 && code < 91) || (code > 96 && code < 123)) {
+      const firstEmptyLetter: Letter = words[0].letters.find(
+        (letter) => letter.char === ""
+      )!;
 
-    if (firstEmptyLetter) {
-      firstEmptyLetter.char = e.key.toUpperCase();
+      if (firstEmptyLetter) {
+        firstEmptyLetter.char = e.key.toUpperCase();
+      }
+
+      setWords([...words]);
     }
-
-    setWords([...words]);
   };
 
   useEffect(() => {
