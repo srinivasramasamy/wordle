@@ -19,9 +19,9 @@ const getBackgroundClassName = (match: string | undefined): string => {
 function Cell({ char, match }: Iprops) {
   return (
     <td
-      className={`border text-center column-width ${getBackgroundClassName(
-        match
-      )}`}
+      className={`border text-center column-width ${
+        match ? "text-white" : ""
+      } ${getBackgroundClassName(match)}`}
     >
       {char ? char : ""}
     </td>
