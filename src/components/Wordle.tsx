@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Letter } from "../types/Letter";
 import { Word } from "../types/Word";
 import Row from "./Row";
@@ -21,6 +21,22 @@ function Wordle() {
     buildEmptyWord(),
     buildEmptyWord(),
   ]);
+
+  const onKeyDown = (e: KeyboardEvent) => {
+    const firstEmptyLetter: Letter = words[0].letters.find(
+      (letter) => letter.char === ""
+    )!;
+
+    if (firstEmptyLetter) {
+      firstEmptyLetter.char = e.key.toUpperCase();
+    }
+
+    setWords([...words]);
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
     <div className="d-flex justify-content-center">
