@@ -1,13 +1,16 @@
+import { Word } from "../types/Word";
 import Cell from "./Cell";
 
-function Row() {
+interface Iprops {
+  word?: Word;
+}
+
+function Row({ word }: Iprops) {
   return (
     <tr className="row-height">
-      <Cell />
-      <Cell />
-      <Cell />
-      <Cell />
-      <Cell />
+      {word?.letters.map((letter) => (
+        <Cell letter={letter} />
+      ))}
     </tr>
   );
 }
