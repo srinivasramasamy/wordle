@@ -25,9 +25,11 @@ function Wordle() {
   return (
     <div className="d-flex justify-content-center">
       <table className="table border fw-bold table-width">
-        {words.map((word) => (
-          <Row word={word} />
-        ))}
+        <tbody>
+          {words.map((word) => (
+            <Row word={word} />
+          ))}
+        </tbody>
       </table>
     </div>
   );
