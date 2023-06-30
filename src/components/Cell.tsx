@@ -1,6 +1,7 @@
+import { Letter } from "../types/Letter";
+
 interface Iprops {
-  char?: string;
-  match?: string;
+  letter?: Letter;
 }
 
 const getBackgroundClassName = (match: string | undefined): string => {
@@ -16,14 +17,14 @@ const getBackgroundClassName = (match: string | undefined): string => {
   }
 };
 
-function Cell({ char, match }: Iprops) {
+function Cell({ letter }: Iprops) {
   return (
     <td
       className={`border text-center column-width ${
-        match ? "text-white" : ""
-      } ${getBackgroundClassName(match)}`}
+        letter?.match ? "text-white" : ""
+      } ${getBackgroundClassName(letter?.match)}`}
     >
-      {char ? char : ""}
+      {letter?.char ? letter.char : ""}
     </td>
   );
 }
