@@ -34,6 +34,16 @@ function Wordle() {
       }
 
       setWords([...words]);
+    } else if (code === 8) {
+      const lastNonEmptyLetter: Letter = words[0].letters.findLast(
+        (letter) => letter.char.length > 0
+      )!;
+
+      if (lastNonEmptyLetter) {
+        lastNonEmptyLetter.char = "";
+      }
+
+      setWords([...words]);
     }
   };
 
