@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { Letter } from "../types/Letter";
+import { Match } from "../types/Match";
 import { Word } from "../types/Word";
 import Row from "./Row";
 
-function Wordle() {
+interface Iprops {
+  solution: string;
+}
+
+function Wordle({ solution }: Iprops) {
   const buildEmptyWord = (): Word => {
     return new Word([
       new Letter("", ""),
@@ -51,9 +56,22 @@ function Wordle() {
     } else if (code === 13) {
       if (firstNonSubmittedWord) {
         firstNonSubmittedWord.submitted = true;
+        firstNonSubmittedWord.letters.map(
+          (letter, index) =>
+            (letter.match = matchWithSolution(letter.char, index))
+        );
       }
       setWords([...words]);
     }
+  };
+
+  const matchWithSolution = (char: string, index: number): string => {
+    const lowaerCaseChar = char.toLowerCase();
+    return solution.includes(lowaerCaseChar)
+      ? solution.charAt(index) === lowaerCaseChar
+        ? Match.PresentInSpot
+        : Match.Present
+      : Match.Absent;
   };
 
   const notSubmitted = (word: Word): boolean => {
