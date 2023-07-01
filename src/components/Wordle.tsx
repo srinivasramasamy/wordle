@@ -81,7 +81,7 @@ function Wordle({ solution }: Iprops) {
 
   return (
     <div className="d-flex justify-content-center">
-      <table className="table border fw-bold table-width">
+      <table className="table fw-bold table-width">
         <tbody>
           {words.map((word) => (
             <Row word={word} />
