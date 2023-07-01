@@ -32,7 +32,12 @@ function Wordle({ solution }: Iprops) {
     const firstNonSubmittedWord: Word | undefined = words.find((word) =>
       notSubmitted(word)
     );
-    if ((code > 64 && code < 91) || (code > 96 && code < 123)) {
+    const backSpace: boolean = code === 8;
+    const enter: boolean = code === 13;
+    const smallOrUpperCaseAlphabets =
+      (code > 64 && code < 91) || (code > 96 && code < 123);
+
+    if (smallOrUpperCaseAlphabets) {
       const firstEmptyLetter: Letter = firstNonSubmittedWord?.letters.find(
         (letter) => letter.char === ""
       )!;
@@ -40,9 +45,7 @@ function Wordle({ solution }: Iprops) {
       if (firstEmptyLetter) {
         firstEmptyLetter.char = e.key.toUpperCase();
       }
-
-      setWords([...words]);
-    } else if (code === 8) {
+    } else if (backSpace) {
       const lastNonEmptyLetter: Letter =
         firstNonSubmittedWord?.letters.findLast(
           (letter) => letter.char.length > 0
@@ -51,9 +54,7 @@ function Wordle({ solution }: Iprops) {
       if (lastNonEmptyLetter) {
         lastNonEmptyLetter.char = "";
       }
-
-      setWords([...words]);
-    } else if (code === 13) {
+    } else if (enter) {
       if (firstNonSubmittedWord) {
         firstNonSubmittedWord.submitted = true;
         firstNonSubmittedWord.letters.map(
@@ -61,8 +62,8 @@ function Wordle({ solution }: Iprops) {
             (letter.match = matchWithSolution(letter.char, index))
         );
       }
-      setWords([...words]);
     }
+    setWords([...words]);
   };
 
   const matchWithSolution = (char: string, index: number): string => {
