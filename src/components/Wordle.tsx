@@ -66,9 +66,9 @@ function Wordle({ solution }: Iprops) {
   };
 
   const matchWithSolution = (char: string, index: number): string => {
-    const lowaerCaseChar = char.toLowerCase();
-    return solution.includes(lowaerCaseChar)
-      ? solution.charAt(index) === lowaerCaseChar
+    const lowerCaseChar = char.toLowerCase();
+    return solution.includes(lowerCaseChar)
+      ? solution.charAt(index) === lowerCaseChar
         ? Match.PresentInSpot
         : Match.Present
       : Match.Absent;
