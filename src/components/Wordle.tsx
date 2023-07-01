@@ -57,10 +57,7 @@ function Wordle({ solution }: Iprops) {
     } else if (enter) {
       if (firstNonSubmittedWord && firstNonSubmittedWord.hasNoEmptyLetters()) {
         firstNonSubmittedWord.submitted = true;
-        firstNonSubmittedWord.letters.map(
-          (letter, index) =>
-            (letter.match = matchWithSolution(letter.char, index))
-        );
+        firstNonSubmittedWord.matchWith(solution);
       }
     }
     setWords([...words]);
