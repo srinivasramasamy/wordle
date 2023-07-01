@@ -4,10 +4,16 @@ import { Match } from "./Match";
 export class Word {
   letters: Letter[];
   submitted: boolean;
+  matched: boolean;
 
-  constructor(letters: Letter[], submitted: boolean = false) {
+  constructor(
+    letters: Letter[],
+    submitted: boolean = false,
+    matched: boolean = false
+  ) {
     this.letters = letters;
     this.submitted = submitted;
+    this.matched = matched;
   }
 
   hasNoEmptyLetters(): boolean {
@@ -27,18 +33,15 @@ export class Word {
       if (letter.char === solutionArray.at(index)) {
         letter.match = Match.PresentInSpot;
         solutionArray[index] = "";
+        this.matched = true;
       } else if (solutionArray.includes(letter.char)) {
         solutionArray[solutionArray.indexOf(letter.char)] = "";
         letter.match = Match.Present;
+        this.matched = false;
       } else {
         letter.match = Match.Absent;
+        this.matched = false;
       }
     });
-  }
-
-  notMatched(): boolean {
-    return this.letters.find((letter) => letter.match !== Match.PresentInSpot)
-      ? true
-      : false;
   }
 }
