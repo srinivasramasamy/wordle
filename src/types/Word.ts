@@ -35,4 +35,10 @@ export class Word {
       }
     });
   }
+
+  notMatched(): boolean {
+    return this.letters.find((letter) => letter.match !== Match.PresentInSpot)
+      ? true
+      : false;
+  }
 }
