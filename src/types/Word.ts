@@ -8,4 +8,10 @@ export class Word {
     this.letters = letters;
     this.submitted = submitted;
   }
+
+  hasNoEmptyLetters(): boolean {
+    return this.letters.find((letter) => letter.char.length === 0)
+      ? false
+      : true;
+  }
 }

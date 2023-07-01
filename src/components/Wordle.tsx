@@ -55,7 +55,7 @@ function Wordle({ solution }: Iprops) {
         lastNonEmptyLetter.char = "";
       }
     } else if (enter) {
-      if (firstNonSubmittedWord) {
+      if (firstNonSubmittedWord && firstNonSubmittedWord.hasNoEmptyLetters()) {
         firstNonSubmittedWord.submitted = true;
         firstNonSubmittedWord.letters.map(
           (letter, index) =>
@@ -97,3 +97,6 @@ function Wordle({ solution }: Iprops) {
 }
 
 export default Wordle;
+function hasNoEmptyLetters() {
+  throw new Error("Function not implemented.");
+}
