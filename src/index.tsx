@@ -6,7 +6,7 @@ import "./styles/styles.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Wordle />
+    <Wordle solution="apple" />
   </React.StrictMode>,
   document.getElementById("root")
 );
