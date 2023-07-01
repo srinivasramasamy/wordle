@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Letter } from "../types/Letter";
-import { Match } from "../types/Match";
 import { Word } from "../types/Word";
 import Row from "./Row";
 
@@ -61,15 +60,6 @@ function Wordle({ solution }: Iprops) {
       }
     }
     setWords([...words]);
-  };
-
-  const matchWithSolution = (char: string, index: number): string => {
-    const lowerCaseChar = char.toLowerCase();
-    return solution.includes(lowerCaseChar)
-      ? solution.charAt(index) === lowerCaseChar
-        ? Match.PresentInSpot
-        : Match.Present
-      : Match.Absent;
   };
 
   useEffect(() => {
