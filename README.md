@@ -7,4 +7,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Issues Faced during implementations
 
-1. `Array.prototype.findLast()` was supported only with es6 and latest typescript version: 5.1.3.
+1. `Array.prototype.findLast()` was supported only with es6 and latest typescript version: 3.2.1.
