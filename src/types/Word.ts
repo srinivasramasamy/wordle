@@ -28,6 +28,7 @@ export class Word {
         letter.match = Match.PresentInSpot;
         solutionArray[index] = "";
       } else if (solutionArray.includes(letter.char)) {
+        solutionArray[solutionArray.indexOf(letter.char)] = "";
         letter.match = Match.Present;
       } else {
         letter.match = Match.Absent;
