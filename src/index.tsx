@@ -6,6 +6,7 @@ import "./styles/styles.css";
 
 ReactDOM.render(
   <React.StrictMode>
+    <h1 className="d-flex justify-content-center">Wordle</h1>
     <Wordle solution="apple" />
   </React.StrictMode>,
   document.getElementById("root")
