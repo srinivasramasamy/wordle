@@ -30,7 +30,7 @@ function Wordle({ solution }: Iprops) {
   const onKeyDown = (e: KeyboardEvent) => {
     const code: number = e.keyCode;
     const firstNonSubmittedWord: Word | undefined = words.find((word) =>
-      notSubmitted(word)
+      word.notSubmitted()
     );
     const backSpace: boolean = code === 8;
     const enter: boolean = code === 13;
@@ -75,10 +75,6 @@ function Wordle({ solution }: Iprops) {
       : Match.Absent;
   };
 
-  const notSubmitted = (word: Word): boolean => {
-    return !word.submitted;
-  };
-
   useEffect(() => {
     window.addEventListener("keydown", onKeyDown);
   }, []);
@@ -97,6 +93,3 @@ function Wordle({ solution }: Iprops) {
 }
 
 export default Wordle;
-function hasNoEmptyLetters() {
-  throw new Error("Function not implemented.");
-}

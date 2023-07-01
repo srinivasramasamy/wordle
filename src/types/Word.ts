@@ -14,4 +14,8 @@ export class Word {
       ? false
       : true;
   }
+
+  notSubmitted(): boolean {
+    return !this.submitted;
+  }
 }
