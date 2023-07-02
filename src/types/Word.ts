@@ -28,20 +28,20 @@ export class Word {
 
   matchWith(solution: string) {
     const solutionArray: string[] = solution.toUpperCase().split("");
-
+    let matched: boolean = true;
     this.letters.forEach((letter, index) => {
       if (letter.char === solutionArray.at(index)) {
         letter.match = Match.PresentInSpot;
         solutionArray[index] = "";
-        this.matched = true;
       } else if (solutionArray.includes(letter.char)) {
         solutionArray[solutionArray.indexOf(letter.char)] = "";
         letter.match = Match.Present;
-        this.matched = false;
+        matched = false;
       } else {
         letter.match = Match.Absent;
-        this.matched = false;
+        matched = false;
       }
+      this.matched = matched;
     });
   }
 }
