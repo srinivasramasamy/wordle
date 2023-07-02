@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { allowedWords } from "../data/Data";
 import { Letter } from "../types/Letter";
 import { Word } from "../types/Word";
+import Help from "./Help";
 import Row from "./Row";
 
 interface Iprops {
@@ -27,6 +28,7 @@ function Wordle({ solution }: Iprops) {
     buildEmptyWord(),
   ]);
   const [error, setError] = useState<string>("");
+  const [showHelp, setShowHelp] = useState<boolean>(false);
 
   const joinLetterChars = (word: Word): string => {
     return word.letters.map((letter) => letter.char).join("");
@@ -88,6 +90,11 @@ function Wordle({ solution }: Iprops) {
 
   return (
     <>
+      <div className=" d-flex justify-content-center">
+        <button type="button" className="btn" onClick={() => setShowHelp(true)}>
+          <h1>Wordle</h1>
+        </button>
+      </div>
       <div className="d-flex justify-content-center">
         <table className="table fw-bold table-width">
           <tbody>
@@ -106,6 +113,7 @@ function Wordle({ solution }: Iprops) {
           <div className="text-danger">{error}</div>
         )}
       </div>
+      {showHelp ? <Help setShowHelp={setShowHelp} /> : ""}
     </>
   );
 }
