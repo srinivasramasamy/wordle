@@ -8,8 +8,8 @@ interface Iprops {
 function Row({ word }: Iprops) {
   return (
     <tr className="row-height">
-      {word?.letters.map((letter) => (
-        <Cell letter={letter} />
+      {word?.letters.map((letter, index) => (
+        <Cell letter={letter} key={index} />
       ))}
     </tr>
   );

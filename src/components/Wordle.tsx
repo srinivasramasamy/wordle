@@ -78,8 +78,8 @@ function Wordle({ solution }: Iprops) {
     <div className="d-flex justify-content-center">
       <table className="table fw-bold table-width">
         <tbody>
-          {words.map((word) => (
-            <Row word={word} />
+          {words.map((word, index) => (
+            <Row word={word} key={index} />
           ))}
         </tbody>
       </table>
