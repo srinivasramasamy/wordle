@@ -26,6 +26,7 @@ function Wordle({ solution }: Iprops) {
     buildEmptyWord(),
     buildEmptyWord(),
   ]);
+  const [error, setError] = useState<string>("");
 
   const joinLetterChars = (word: Word): string => {
     return word.letters.map((letter) => letter.char).join("");
@@ -72,6 +73,9 @@ function Wordle({ solution }: Iprops) {
         ) {
           firstNonSubmittedWord.submitted = true;
           firstNonSubmittedWord.matchWith(solution);
+          setError("");
+        } else {
+          setError("Must be a 5 letter word");
         }
       }
       setWords([...words]);
@@ -99,7 +103,7 @@ function Wordle({ solution }: Iprops) {
         ) : words.every((word) => word.submitted) ? (
           <b>{solution.toUpperCase()}</b>
         ) : (
-          ""
+          <div className="text-danger">{error}</div>
         )}
       </div>
     </>
