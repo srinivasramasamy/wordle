@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { allowedWords } from "../data/Data";
 import { Letter } from "../types/Letter";
 import { Word } from "../types/Word";
 import Row from "./Row";
@@ -25,6 +26,10 @@ function Wordle({ solution }: Iprops) {
     buildEmptyWord(),
     buildEmptyWord(),
   ]);
+
+  const joinLetterChars = (word: Word): string => {
+    return word.letters.map((letter) => letter.char).join("");
+  };
 
   const onKeyDown = (e: KeyboardEvent) => {
     const notMatched: boolean = words.find((word) => word.matched)
@@ -60,7 +65,10 @@ function Wordle({ solution }: Iprops) {
       } else if (enter) {
         if (
           firstNonSubmittedWord &&
-          firstNonSubmittedWord.hasNoEmptyLetters()
+          firstNonSubmittedWord.hasNoEmptyLetters() &&
+          allowedWords.includes(
+            joinLetterChars(firstNonSubmittedWord).toLowerCase()
+          )
         ) {
           firstNonSubmittedWord.submitted = true;
           firstNonSubmittedWord.matchWith(solution);
@@ -75,15 +83,26 @@ function Wordle({ solution }: Iprops) {
   }, []);
 
   return (
-    <div className="d-flex justify-content-center">
-      <table className="table fw-bold table-width">
-        <tbody>
-          {words.map((word, index) => (
-            <Row word={word} key={index} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className="d-flex justify-content-center">
+        <table className="table fw-bold table-width">
+          <tbody>
+            {words.map((word, index) => (
+              <Row word={word} key={index} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="d-flex justify-content-center">
+        {words.find((word) => word.matched) ? (
+          <b>Awesome!!!</b>
+        ) : words.every((word) => word.submitted) ? (
+          <b>{solution.toUpperCase()}</b>
+        ) : (
+          ""
+        )}
+      </div>
+    </>
   );
 }
 
