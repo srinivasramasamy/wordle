@@ -3,6 +3,7 @@ import { allowedWords } from "../data/Data";
 import { Letter } from "../types/Letter";
 import { Word } from "../types/Word";
 import Help from "./Help";
+import Keypad from "./Keypad";
 import Row from "./Row";
 
 interface Iprops {
@@ -114,6 +115,7 @@ function Wordle({ solution }: Iprops) {
         )}
       </div>
       {showHelp ? <Help setShowHelp={setShowHelp} /> : ""}
+      <Keypad />
     </>
   );
 }
