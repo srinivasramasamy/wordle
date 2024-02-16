@@ -15259,3 +15259,37 @@ export const allowedWords: string[] = [
   "zymes",
   "zymic",
 ];
+
+export const enterCode: string = "\u23CE";
+export const deleteCode: string = "\u232B";
+
+export const keyCodes: Map<string, number> = new Map<string, number>();
+
+keyCodes.set("A", 65);
+keyCodes.set("B", 66);
+keyCodes.set("C", 67);
+keyCodes.set("D", 68);
+keyCodes.set("E", 69);
+keyCodes.set("F", 70);
+keyCodes.set("G", 71);
+keyCodes.set("H", 72);
+keyCodes.set("I", 73);
+keyCodes.set("J", 74);
+keyCodes.set("K", 75);
+keyCodes.set("L", 76);
+keyCodes.set("M", 77);
+keyCodes.set("N", 78);
+keyCodes.set("O", 79);
+keyCodes.set("P", 80);
+keyCodes.set("Q", 81);
+keyCodes.set("R", 82);
+keyCodes.set("S", 83);
+keyCodes.set("T", 84);
+keyCodes.set("U", 85);
+keyCodes.set("V", 86);
+keyCodes.set("W", 87);
+keyCodes.set("X", 88);
+keyCodes.set("Y", 89);
+keyCodes.set("Z", 90);
+keyCodes.set(enterCode, 13);
+keyCodes.set(deleteCode, 8);
