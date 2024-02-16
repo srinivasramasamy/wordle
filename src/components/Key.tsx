@@ -1,14 +1,16 @@
+import { keyCodes } from "../data/Data";
+
 interface Iprops {
   keyChar: string;
-  keyCode: number;
 }
 
-function Key({ keyChar, keyCode }: Iprops) {
+function Key({ keyChar }: Iprops) {
+  console.log(keyChar);
   const onKeyPress = () => {
     window.dispatchEvent(
       new KeyboardEvent("keydown", {
         key: keyChar,
-        keyCode: keyCode,
+        keyCode: keyCodes.get(keyChar),
       })
     );
   };
