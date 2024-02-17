@@ -16,7 +16,7 @@ function Key({ keyChar }: Iprops) {
 
   return (
     <div
-      className="text-center align-middle column-width fs-3 bg-secondary text-black"
+      className="text-center align-middle key-width key-height p-2 fs-5 bg-secondary text-black"
       role="button"
       onClick={onKeyPress}
     >
