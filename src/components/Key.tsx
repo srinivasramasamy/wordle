@@ -2,9 +2,10 @@ import { keyCodes } from "../data/Data";
 
 interface Iprops {
   keyChar: string;
+  special?: boolean;
 }
 
-function Key({ keyChar }: Iprops) {
+function Key({ keyChar, special }: Iprops) {
   const onKeyPress = () => {
     window.dispatchEvent(
       new KeyboardEvent("keydown", {
@@ -16,7 +17,9 @@ function Key({ keyChar }: Iprops) {
 
   return (
     <div
-      className="text-center align-middle key-width key-height p-2 fs-5 bg-secondary text-black"
+      className={`text-center align-middle ${
+        special ? "special-key-width" : "key-width"
+      } key-height p-2 fs-5 bg-secondary text-black`}
       role="button"
       onClick={onKeyPress}
     >

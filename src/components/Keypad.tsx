@@ -33,7 +33,7 @@ function Keypad() {
       </div>
       <div className="d-flex justify-content-center mt-1">
         <div className="d-flex gap-1">
-          <Key keyChar={enterCode} />
+          <Key keyChar={enterCode} special={true} />
           <Key keyChar="Z" />
           <Key keyChar="X" />
           <Key keyChar="C" />
@@ -41,7 +41,7 @@ function Keypad() {
           <Key keyChar="B" />
           <Key keyChar="N" />
           <Key keyChar="M" />
-          <Key keyChar={deleteCode} />
+          <Key keyChar={deleteCode} special={true} />
         </div>
       </div>
     </>
