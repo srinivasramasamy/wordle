@@ -5,7 +5,6 @@ interface Iprops {
 }
 
 function Key({ keyChar }: Iprops) {
-  console.log(keyChar);
   const onKeyPress = () => {
     window.dispatchEvent(
       new KeyboardEvent("keydown", {
